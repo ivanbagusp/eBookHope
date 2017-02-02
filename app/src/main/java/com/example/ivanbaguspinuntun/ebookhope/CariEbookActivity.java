@@ -1,7 +1,8 @@
 package com.example.ivanbaguspinuntun.ebookhope;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,6 +36,9 @@ public class CariEbookActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private Button btn_refresh;
     private LinearLayoutManager layoutManager;
+    private Button btn_filter_ebook;
+
+
 
     HashMap<String, String> map;
     ArrayList<HashMap<String, String>> array_list;
@@ -63,6 +67,16 @@ public class CariEbookActivity extends AppCompatActivity {
                 getEbook();
             }
 
+        });
+
+        btn_filter_ebook = (Button) findViewById(R.id.btn_filter_ebook);
+        btn_filter_ebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getSupportFragmentManager();
+                FilterFragment filter = new FilterFragment();
+                filter.show(fm, "Filter"); //masih ada error disini
+            }
         });
 
         getEbook();
